@@ -1,33 +1,90 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model List<Web_Dat_Ve_Xem_Phim.Models.MovieVM>
+
+
+@{
+    ViewBag.Title = "Trang chủ";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    body {
+        background-color: lightgreen;
+    }
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        width: 100%;
+        margin: auto;
+    }
+
+    .product-item {
+        padding-top: 3vw;
+    }
+
+    .category {
+        background-color: forestgreen;
+    }
+</style>
+<main>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                    <img src="~/Uploads/poster-phim.jpg" alt="Chania">
+                </div>
+                <div class="item">
+                    <img src="~/Uploads/avengers-endgame-disney.jpg" alt="Flower">
+                </div>
+
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
+    <section class="product-item">
+        <div class="container category" style="height:40px; display:flex; align-items:center">
+            <a href="" style="color:white;padding-right:10px">Phim mới</a>
+            <a href="" style="color:white">Phim đang chiếu</a>
+
+        </div>
+
+        <div class="container product-by-category" style="margin-top:1vw;">
+            <div class="row text-center" style="display: flex; justify-content: center">
+                @foreach (var movie in Model)
+                {
+                    <div class="col-md-3" style="padding: 20px; margin-right: 1vw; margin-bottom: 1vw; border: 1px solid green; border-radius: 1vw; background-color: whitesmoke">
+                        <div class="row">
+                            <img src="~/Uploads/poster-phim-hoat-hinh.jpg" style="margin-bottom: 1vw" />
+                            <h4 style="font-weight:bold; color:green; height:40px">@movie.Name</h4>
+                            <p style="height:70px">Diên viên: @movie.Cast</p>
+                            <p>Đạo diễn: @movie.Author</p>
+                            <p style="color:red">Khởi chiếu: @movie.ReleaseDate</p>
+                            <div class="container text-center" style="border-radius: 5vw">
+                                <button class="btn-success" style=" padding: 0.5vw; background-color:green">ĐẶT VÉ</button>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </section>
 </main>
