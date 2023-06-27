@@ -29,8 +29,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background-color: green">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background-image:url(../Uploads/background.jpg)">
+        <div class="container-fluid" >
             <div class="navbar-brand" style="font-weight: bold; color: white">SuiPhim.Net</div>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +43,73 @@
                     <li>@Html.ActionLink("Lịch chiếu", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Giá vé", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
+                <ul class="navbar-nav float-end">
+                    @if (Session["Username"] == null)
+                    {
+                        <li>@Html.ActionLink("Đăng nhập", "Login", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Đăng ký", "Register", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li style="display:flex;align-items:center"><a href="" style="line-height:inherit">@Session["Username"]</a></li>
+                        <li>@Html.ActionLink("Đăng xuất", "Logout", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+
+                </ul>
             </div>
         </div>
 
     </nav>
     <div class="body-content">
         @RenderBody()
-        <hr />
-        <footer class="text-center">
-            <p>&copy; @DateTime.Now.Year - SuiPhim.Net</p>
-        </footer>
+        <hr/>
+        <div class="footer container-fluid text-center" style="padding:0;margin:0; background-image:url(../Uploads/background.jpg)">
+            <div class="fott">
+                <div class="inner">
+                    <p id="pageTop">
+                        <a href="#"><img src="/Themes/RapChieuPhim/Content/content.v2/images/icon-top.png" alt=""></a>
+                    </p>
+                    <style type="text/css">
+                        .visit_online {
+                            color: #fff;
+                            width: 100%;
+                            text-align: center;
+                            margin: 0 auto;
+                            /*display:table;*/
+                        }
+
+                            .visit_online dl {
+                                width: 50%;
+                                display: table-cell;
+                                text-align: center;
+                                margin: 0 auto;
+                            }
+
+                            .visit_online dd {
+                                padding-top: 5px;
+                            }
+                    </style>
+
+                    <div class="box_left">
+                        <div class="clear"></div>
+                    </div>
+                    <div class="down" style="margin-bottom:20px">
+                        <a href=""><img src="~/Uploads/chplay.png" alt="" style="width:250px;height:75px;margin-right:10px"></a>
+                        <a href=""><img src="~/Uploads/appstore.png" alt="" style="width:250px;height:75px;margin-left:10px"></a>
+                    </div>
+                    <p style="color:white; padding-bottom:40px">
+                        Cơ quan chủ quản: NHÓM 6<br>
+                        Bản quyền thuộc nhóm 6 đại học Bách Khoa Hà Nội<br>
+                        Giấy phép số: 111/GP- TTĐT ngày 28/3/2023 - Chịu trách nhiệm: Ngô Thị Duyên – Quyền Giám đốc.<br>
+                        Địa chỉ: 118 Kim Hoa, Quận Hai Bà Trưng, Tp. Hà Nội - Điện thoại: 0123456789
+                    </p>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <script type="text/javascript" src="/scripts/public.footer.js"></script>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

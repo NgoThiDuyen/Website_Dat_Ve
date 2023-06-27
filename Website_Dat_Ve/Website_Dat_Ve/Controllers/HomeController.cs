@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -6,22 +7,17 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Web_Dat_Ve_Xem_Phim.Models;
+using Website_Dat_Ve.Models;
 
 namespace Website_Dat_Ve.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly HttpClient _httpClient;
-
-        public HomeController()
-        {
-            _httpClient = new HttpClient();
-            // Cấu hình các thông tin liên quan đến API như địa chỉ base URL, token xác thực, ...
-            _httpClient.BaseAddress = new Uri("http://192.168.1.15:8086/");
-            _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer YourAccessToken");
-        }
+       
         public async Task<ActionResult> Index()
         {
+            var _httpClient = MyHttpClient.Instance;
+
             string apiUrl = _httpClient.BaseAddress + "api/Movie/GetMovieByCategory";
 
             using (HttpClient client = new HttpClient())
@@ -39,20 +35,6 @@ namespace Website_Dat_Ve.Controllers
                     return View(new List<MovieVM>());
                 }
             }
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }
