@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using Web_Dat_Ve_Xem_Phim.Models;
 
 namespace Website_Dat_Ve.Models
 {

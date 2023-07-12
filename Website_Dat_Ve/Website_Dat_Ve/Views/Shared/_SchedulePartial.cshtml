@@ -1,0 +1,7 @@
+﻿@model Website_Dat_Ve.Models.ScheduleVM
+
+    <div class="col-md-2">
+        <div class="container" style="background-color:green; padding:10px; border-radius:15px;justify-content:center;display:flex">
+            <a href="@Url.Action("OrderPlan", "OrderTicket", new {idSchedule = Model.Id })" style="color:white">@Model.TimePlayString @(Model.PlaySchedule.ToString("dd/MM/yyyy"))</a>
+        </div>
+    </div>

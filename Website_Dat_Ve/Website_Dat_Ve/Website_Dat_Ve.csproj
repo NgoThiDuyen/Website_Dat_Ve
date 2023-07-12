@@ -137,13 +137,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovieDetailController.cs" />
+    <Compile Include="Controllers\OrderTicketController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Core\APIResponseDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\MovieVM.cs" />
     <Compile Include="Models\MyHttpClient.cs" />
+    <Compile Include="Models\ScheduleVM.cs" />
     <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +169,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\jquery.seat-charts.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\style_login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -175,21 +182,28 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.nicescroll.js" />
+    <Content Include="Scripts\jquery.seat-charts.js" />
+    <Content Include="Scripts\jquery.seat-charts.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\scripts.js" />
     <Content Include="Uploads\appstore.png" />
     <Content Include="Uploads\avengers-endgame-disney.jpg" />
     <Content Include="Uploads\background-body.jpg" />
     <Content Include="Uploads\background.jpg" />
     <Content Include="Uploads\chplay.png" />
+    <Content Include="Uploads\godzilla-vs-kong.jpg" />
+    <Content Include="Uploads\movie.png" />
     <Content Include="Uploads\poster-phim-hoat-hinh.jpg" />
     <Content Include="Uploads\poster-phim.jpg" />
     <Content Include="Web.config" />
@@ -207,9 +221,14 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\MovieDetail\Index.cshtml" />
+    <Content Include="Views\Shared\_SchedulePartial.cshtml" />
+    <Content Include="Views\Shared\_OtherMoviePartial.cshtml" />
+    <Content Include="Views\OrderTicket\OrderPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

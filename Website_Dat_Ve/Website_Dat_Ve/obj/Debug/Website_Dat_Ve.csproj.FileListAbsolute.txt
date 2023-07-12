@@ -1,3 +1,5 @@
+E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.csproj.AssemblyReference.cache
+E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.csproj.CoreCompileInputs.cache
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\Website_Dat_Ve.dll.config
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\Website_Dat_Ve.dll
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\Website_Dat_Ve.pdb
@@ -80,8 +82,6 @@ E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\System.Net.Http.Formatting.x
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\System.Web.Http.xml
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\System.Web.Http.WebHost.xml
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.csproj.AssemblyReference.cache
-E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.csproj.CoreCompileInputs.cache
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.csproj.CopyComplete
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.dll
 E:\Website_Dat_Ve\Website_Dat_Ve\Website_Dat_Ve\obj\Debug\Website_Dat_Ve.pdb

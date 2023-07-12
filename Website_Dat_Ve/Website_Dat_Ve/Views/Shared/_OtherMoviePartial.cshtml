@@ -1,0 +1,38 @@
+﻿@model Website_Dat_Ve.Models.MovieVM
+<style>
+    .container .row .col-md-7 p {
+        color: white
+    }
+    h5{
+        color:white
+    }
+</style>
+<div class="col-md-6">
+    <div class="container" style="padding:15px;margin-bottom:20px; border-radius:10px;background-color:green; height:390px;align-items:center;display:flex">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="https://apirapphimdvh.bsite.net/@Model.Image" style="margin-bottom: 1vw; width: 100%; height: 350px; border-radius: 10px" />
+            </div>
+            <div class="col-md-7">
+                <div style="height:300px">
+                    <h5>@Model.Name</h5>
+                    <p>Loại phim: @Model.MovieType</p>
+                    <p>Thời lượng: @Model.Time</p>
+                    <p>Diễn viên: @Model.Cast</p>
+                    <p>Đạo diễn: @Model.Author</p>
+                    <p>Khởi chiếu: @Model.ReleaseDate.ToString("dd/MM/yyyy")</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 text-center" style="padding:10px; background-color:yellow; border-radius:10px">
+                        <a style="background:none;color:black;" class="btn-primary" href=""> Chi tiết</a>
+                    </div>
+                    <div class="col-md-5 text-center" style="padding:10px; background-color:lightpink; border-radius:10px;margin-left:20px">
+                        <a style="background:none;color:black;" class="btn-primary" href=""> Đặt vé</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

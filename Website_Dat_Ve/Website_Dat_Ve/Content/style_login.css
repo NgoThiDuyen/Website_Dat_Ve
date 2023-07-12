@@ -101,6 +101,7 @@ body {
     position:absolute;
     background-image: url(../Uploads/avengers-endgame-disney.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 120vh;
     z-index: -1000;

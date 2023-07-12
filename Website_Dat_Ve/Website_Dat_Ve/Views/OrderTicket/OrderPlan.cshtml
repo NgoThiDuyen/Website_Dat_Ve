@@ -1,0 +1,256 @@
+﻿@model Website_Dat_Ve.Models.DetailScheduleVM
+@{
+    ViewBag.Title = "OrderPlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string[] occupiedSeats = { Model.SeatHaveBeenBookedList };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>Đặt vé xem phim</title>
+    <style>
+        .body-content {
+            margin-top: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .seat {
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+            .seat:hover {
+                background-color: royalblue;
+            }
+
+        .available {
+            background-color: lightgray;
+        }
+
+        .selected {
+            background-color: limegreen !important;
+        }
+
+        .occupied {
+            background-color: red;
+            color: white;
+            cursor: not-allowed;
+        }
+
+        .couple {
+            background-color: pink;
+        }
+
+        .vip {
+            background-color: yellow;
+        }
+
+        .couple.available.selected {
+            background-color: limegreen;
+        }
+
+        .vip.available.selected {
+            background-color: limegreen;
+        }
+
+        .background-image {
+            position: absolute;
+            height: 70vw;
+            width: 100vw;
+            background-image: url("../Uploads/godzilla-vs-kong.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: -1000;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="row text-center" style="padding-top:40px">
+        <h2 style="color:red;font-weight:bold">CHỌN VỊ TRÍ GHẾ</h2>
+        <h5>Bạn đã chọn: <span style="color:green; font-weight:bold">@Model.MovieName</span></h5>
+        <p style="font-weight:bold">Rạp phim: @Model.CinemaName</p>
+        <p style="font-weight:bold">Suất chiếu: @Model.PlayScheduleString</p>
+        <div class="col-md-8" style="display:flex;justify-content:center">
+            <div class="container text-center" style="border:1px solid green; border-radius:10px;padding:40px;margin-left:50px;margin-right:50px">
+                <p>
+                    Để chọn ghế vui lòng chọn ghế ưa thích theo icon
+                    sau đó click tiếp vào ghế đã chọn để xoá lựa chọn. <br />
+                    <span style="color:red">Trên mobile, sơ đồ hiển thị tốt nhất khi quay ngang</span>
+                </p>
+                <div class="container" style="display:flex;margin-bottom:20px; justify-content:center">
+                    <div style="border-radius: 10px; border: 1px solid green; padding: 10px; margin-left: 20px; background-color: lightgray; font-weight: bold">Ghế thường</div>
+                    <div style="border-radius: 10px; border: 1px solid green; padding: 10px; margin-left: 20px; background-color: yellow; font-weight: bold ">Ghế vip</div>
+                    <div style="border-radius: 10px; border: 1px solid green; padding: 10px; margin-left: 20px; background-color: pink; font-weight: bold ">Ghế đôi</div>
+                    <div style="border-radius: 10px; border: 1px solid green; padding: 10px; margin-left: 20px; background-color: red;color:white;font-weight:bold">Ghế đã đặt</div>
+                </div>
+                <div id="seatMap">
+                    @for (int row = 1; row <= 12; row++)
+                    {
+                        <div class="container" style="display:flex;justify-content:center">
+                            <span style="width:20px;margin-right:15px;display:flex;align-items:center;font-weight:bold;color:darkgreen">@((char)('A' + row - 1))</span>
+                            @for (int column = 1; column <= 18; column++)
+                            {
+                                var seatClass = "seat available";
+                                if ((column >= 1 && column <= 18) && (row == 12 && column >= 1 && column <= 18))
+                                {
+                                    seatClass += " couple";
+                                }
+                                else if ((row >= 3 && row <= 8) && (column >= 6 && column <= 13))
+                                {
+                                    seatClass += " vip";
+                                }
+                                else
+                                {
+                                    seatClass += " normal";
+                                }
+                                var seatId = "seat_" + ((char)('A' + row - 1)) + column;
+
+
+                                if (occupiedSeats.Contains(seatId))
+                                {
+                                    seatClass += " occupied";
+                                }
+                                <div class="@seatClass" id="@seatId" style="border-radius:10px;border:1px solid green" onclick="selectSeat('@((char)('A' + row - 1))', @column)">@column</div>
+                            }
+                            <span style="width: 20px; margin-left: 25px; font-weight: bold; display: flex; align-items: center; color: darkgreen ">@((char)('A' + row - 1))</span>
+                        </div>
+                    }
+                </div>
+                <a href="@Url.Action("Index", "Payment", new { idMovie = Model.Id, listSeats = "" })" id="payButton" onclick="pay('@Model.Id')" style="width:150px;padding:10px;margin-top:20px; background-color:green;color:white; font-weight:500" class="btn">THANH TOÁN</a>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="container" style="width:60%; padding: 20px; margin-bottom: 1vw; border: 1px solid green; border-radius: 10px">
+                <div class="row">
+                    <img src="https://apirapphimdvh.bsite.net/@Model.Image" style="margin-bottom: 15px; width:100%; height:300px" />
+                    <h4 style="font-weight:bold; color:green; height:60px">@Model.MovieName</h4>
+                    <p style="height:70px">Diễn viên: @Model.Cast</p>
+                    <p>Đạo diễn: @Model.Author</p>
+                    <p style="color:red">Khởi chiếu: @Model.ReleaseDate.ToString("dd/MM/yyyy")</p>
+                    <h4>THÔNG TIN VỊ TRÍ GHẾ</h4>
+                    <h4 id="selectedSeatInfo" style="color:green"></h4>
+                    <h5 id="selectedSeatCount"></h5>
+                    <h5 id="totalPrice" style="color:red"></h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var selectedSeats = [];
+
+        var seatPrices = {
+            normal: 70000,
+            vip: 80000,
+            couple: 120000
+        };
+
+        function selectSeat(row, column) {
+            var seat = document.getElementById("seat_" + row + column);
+
+            if (seat.classList.contains("available")) {
+                seat.classList.remove("available");
+                seat.classList.add("selected");
+                selectedSeats.push({ row: row, column: column });
+            } else if (seat.classList.contains("selected")) {
+                seat.classList.remove("selected");
+                seat.classList.add("available");
+                removeSeatFromSelected(row, column);
+            }
+
+            updateSelectedSeats();
+        }
+
+        function removeSeatFromSelected(row, column) {
+            selectedSeats = selectedSeats.filter(function (seat) {
+                return seat.row !== row || seat.column !== column;
+            });
+        }
+        function getSeatType(row, column) {
+            if ((column >= 1 && column <= 18) && (row == 12 && column >= 1 && column <= 18)) {
+                return "couple";
+            }
+            else if ((row >= 3 && row <= 8) && (column >= 6 && column <= 13)) {
+                return "vip";
+            }
+            else {
+                return "normal";
+            }
+        }
+        function updateSelectedSeats() {
+            var selectedSeatInfo = document.getElementById("selectedSeatInfo");
+            selectedSeatInfo.innerText = "";
+
+            selectedSeats.forEach(function (seat, index) {
+                if (index > 0) {
+                    selectedSeatInfo.innerText += ",  ";
+                }
+                selectedSeatInfo.innerText += seat.row + seat.column;
+            });
+            var selectedSeatCount = document.getElementById("selectedSeatCount");
+            selectedSeatCount.innerText = "Số lượng ghế đã chọn: " + selectedSeats.length;
+
+            var totalPrice = document.getElementById("totalPrice");
+            var total = 0;
+
+            selectedSeats.forEach(function (seat) {
+                var seatType = getSeatType(seat.row, seat.column);
+                total += seatPrices[seatType];
+            });
+
+            totalPrice.innerText = "Tổng tiền: " + formatCurrency(total);
+        }
+
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(amount);
+        }
+
+        function assignOccupiedSeatsFromInput(inputString) {
+            var occupiedSeats = inputString.split(",  ");
+
+            occupiedSeats.forEach(function (seatString) {
+                var seatId = "seat_" + seatString;
+                var seat = document.getElementById(seatId);
+
+                if (seat) {
+                    seat.classList.add("occupied");
+                    seat.classList.remove("available");
+                    seat.onclick = null;
+                }
+            });
+        }
+        // Gọi hàm assignOccupiedSeatsFromInput với chuỗi "A1, C1"
+        assignOccupiedSeatsFromInput("@Model.SeatHaveBeenBookedList");
+
+         function pay(movieId) {
+            var selectedSeatIds = selectedSeats.map(function(seat) {
+                return seat.row + seat.column;
+            });
+            var listSeats = selectedSeatIds.join(","); // Chuyển danh sách ghế đã chọn thành chuỗi
+            var url = "@Url.Action("Index", "Payment", new { idMovie = "movieId", listSeats = "listSeats" })";
+            url = url.replace("movieId", movieId);
+            url = url.replace("listSeats", listSeats);
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
+

@@ -13,7 +13,7 @@ namespace Website_Dat_Ve.Models
         static MyHttpClient()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://192.168.1.12:8086/");
+            _httpClient.BaseAddress = new Uri("https://apirapphimdvh.bsite.net/");
             _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer YourAccessToken");
         }
 

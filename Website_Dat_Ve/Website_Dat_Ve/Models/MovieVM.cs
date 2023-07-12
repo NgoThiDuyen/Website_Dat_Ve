@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Web_Dat_Ve_Xem_Phim.Models
+namespace Website_Dat_Ve.Models
 {
     public class MovieResponse
     {
@@ -14,7 +14,7 @@ namespace Web_Dat_Ve_Xem_Phim.Models
         public List<MovieVM> Data { get; set; }
     }
     public class MovieVM
-    {
+    {   
         public int Id { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }

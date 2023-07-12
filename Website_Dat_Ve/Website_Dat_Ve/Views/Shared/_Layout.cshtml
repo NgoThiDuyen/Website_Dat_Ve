@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/home-style.css" rel="stylesheet" />
@@ -18,6 +20,15 @@
             border-radius: 3vw;
             height: 3vw;
         }
+        .navbar-light .navbar-nav .nav-link {
+            color: white !important
+        }
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: yellow !important
+        }
+        .navbar {
+            background-image: url(/Uploads/background.jpg)
+        }
 
         .navbar-nav > li > a {
             color: white;
@@ -26,11 +37,15 @@
             .navbar-nav > li > a:hover {
                 color: yellow;
             }
+
+        footer {
+            background-image: url(/Uploads/background.jpg)
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background-image:url(../Uploads/background.jpg)">
-        <div class="container-fluid" >
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
+        <div class="container-fluid">
             <div class="navbar-brand" style="font-weight: bold; color: white">SuiPhim.Net</div>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +77,8 @@
     </nav>
     <div class="body-content">
         @RenderBody()
-        <hr/>
-        <div class="footer container-fluid text-center" style="padding:0;margin:0; background-image:url(../Uploads/background.jpg)">
+        <hr />
+        <div class="footer container-fluid text-center" style="padding: 0; margin: 0; background-image: url(/Uploads/background.jpg)">
             <div class="fott">
                 <div class="inner">
                     <p id="pageTop">
@@ -108,12 +123,19 @@
                 <div class="clear"></div>
             </div>
 
-            <script type="text/javascript" src="/scripts/public.footer.js"></script>
         </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
+    <script src="~/Scripts/jquery.seat-charts.js"></script>
+    <script src="~/Scripts/jquery.seat-charts.min.js"></script>
+    <script src="~/Scripts/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/scripts.js"></script>
 </body>
 </html>
