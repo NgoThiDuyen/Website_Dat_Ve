@@ -49,10 +49,10 @@
                         <p>Đạo diễn: @Model.Author</p>
                         <p>Diễn viên: @Model.Cast</p>
                         <p>Thời lượng: @Model.Time</p>
-                        <p>Khởi chiếu: @Model.ReleaseDate</p>
+                        <p>Khởi chiếu: @Model.ReleaseDate.ToString("dd/MM/yyyy")</p>
                         <p>Lượt xem: @Model.NumberView</p>
-                        <a class="btn" href="@Url.Action("OrderPlan", "OrderTicket")" 
-                           style="color: white; background-color: green; border-radius: 10px; padding-top: 10px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px; border:none ">Đặt vé</a>
+                        @*<a class="btn" href="@Url.Action("OrderPlan", "OrderTicket")" 
+                           style="color: white; background-color: green; border-radius: 10px; padding-top: 10px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px; border:none ">Đặt vé</a>*@
                     </div>
                     <div class="col-md-6">
                         <p>

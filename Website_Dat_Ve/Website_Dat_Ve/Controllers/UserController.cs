@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Website_Dat_Ve.Models;
 
 namespace Website_Dat_Ve.Controllers
@@ -47,6 +48,9 @@ namespace Website_Dat_Ve.Controllers
                     Session["UserId"] = login.Id;
                     Session["Username"] = login.Username;
                     Session["Name"] = login.Name;
+                    Session["Email"] = login.Email;
+                    Session["Phone"] = login.NumberPhone;
+                    Session["Token"] = loginResult.Data.Token;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -60,6 +64,9 @@ namespace Website_Dat_Ve.Controllers
             Session["UserId"] = null;
             Session["Username"] = null;
             Session["Name"] = null;
+            Session["Email"] = null;
+            Session["Phone"] = null;
+            Session["Token"] = null;
             return RedirectToAction("Index", "Home");
         }
 

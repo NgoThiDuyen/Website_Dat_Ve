@@ -1,0 +1,48 @@
+﻿@model Website_Dat_Ve.Models.DetailScheduleVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+
+</head>
+<style>
+    .container .text-center form button:hover {
+        background-color: darkgreen
+    }
+</style>
+<body>
+    <div class="container" style="padding:20px;border:1px solid green;border-radius:15px">
+        <div class="text-center">
+            <h2 style="color:green;margin-bottom:20px;">Hóa đơn đặt vé</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4  text-center">
+                <img style="height:250px;width:200px" src="https://apirapphimdvh.bsite.net/@Model.Image" />
+            </div>
+            <div class="col-md-6">
+                <h4 style="color:red">Tên phim: @Model.MovieName</h4>
+                <p>Đạo diễn: @Model.Author</p>
+                <p>Diễn viên: @Model.Cast</p>
+                <p>Thời lượng: @Model.MovieTime phút</p>
+                <p>Lịch chiếu: @Model.PlayScheduleString</p>
+                <p>Rạp: @Model.CinemaName</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <form method="post" action="@Url.Action("Index", "Payment")">
+                <input type="hidden" name="scheduleId" value="@ViewBag.ScheduleId" />
+                <input type="hidden" name="seatList" value="@ViewBag.ListSeat" />
+                <input type="hidden" name="name" value="@Session["Name"]" />
+                <input type="hidden" name="numberPhone" value="@Session["Phone"]" />
+                <input type="hidden" name="email" value="@Session["Email"]" />
+                <!-- Các phần khác của biểu mẫu -->
+                <!-- ... -->
+                <p style="height:30px;color:green">@ViewBag.SuccessOrder</p>
+                <button style="width:200px;padding:10px;color:white;background-color:green;border:none;border-radius:10px" type="submit">Xác nhận đặt vé</button>
+            </form>
+        </div>
+
+    </div>
+</body>

@@ -20,13 +20,21 @@ namespace Website_Dat_Ve.Controllers
         public async Task<ActionResult> OrderPlan(int idSchedule)
         {
             var _httpClient = MyHttpClient.Instance;
-
+            string token;
+            if (Session["Token"] == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+            else
+            {
+                token = Session["Token"].ToString();
+            }
             string apiUrl = _httpClient.BaseAddress + "api/Schedule/GetScheduleDetail?scheduleId=" + idSchedule.ToString();
 
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
-             
+
 
                 if (response.IsSuccessStatusCode)
                 {

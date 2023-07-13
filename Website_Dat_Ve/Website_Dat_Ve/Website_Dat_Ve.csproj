@@ -148,6 +148,8 @@
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\MovieVM.cs" />
     <Compile Include="Models\MyHttpClient.cs" />
+    <Compile Include="Models\OrderHistoryVM.cs" />
+    <Compile Include="Models\PaymentVM.cs" />
     <Compile Include="Models\ScheduleVM.cs" />
     <Compile Include="Models\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,10 +227,11 @@
     <Content Include="Views\Shared\_SchedulePartial.cshtml" />
     <Content Include="Views\Shared\_OtherMoviePartial.cshtml" />
     <Content Include="Views\OrderTicket\OrderPlan.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\OrderHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Payment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -24,10 +24,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 text-center" style="padding:10px; background-color:yellow; border-radius:10px">
-                        <a style="background:none;color:black;" class="btn-primary" href=""> Chi tiết</a>
+                        <a style="background:none;color:black;" class="btn-primary" href="@Url.Action("Index", "MovieDetail", new {id = Model.Id })"> Chi tiết</a>
                     </div>
                     <div class="col-md-5 text-center" style="padding:10px; background-color:lightpink; border-radius:10px;margin-left:20px">
-                        <a style="background:none;color:black;" class="btn-primary" href=""> Đặt vé</a>
+                        <a style="background:none;color:black;" class="btn-primary" href="@Url.Action("Index", "MovieDetail", new {id = Model.Id })"> Đặt vé</a>
                     </div>
                 </div>
             </div>

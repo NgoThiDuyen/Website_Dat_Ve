@@ -129,7 +129,8 @@
                         </div>
                     }
                 </div>
-                <a href="@Url.Action("Index", "Payment", new { idMovie = Model.Id, listSeats = "" })" id="payButton" onclick="pay('@Model.Id')" style="width:150px;padding:10px;margin-top:20px; background-color:green;color:white; font-weight:500" class="btn">THANH TOÁN</a>
+                <a href="@Url.Action("Index", "Payment", new { scheduleId = Model.Id, selectedSeats = "" })" id="paymentButton" style="width:150px;padding:10px;margin-top:20px; background-color:green;color:white; font-weight:500" class="btn">THANH TOÁN</a>
+
             </div>
         </div>
         <div class="col-md-4 text-center">
@@ -155,11 +156,11 @@
 
     <script>
         var selectedSeats = [];
-
+        window.selectedSeats = selectedSeats;
         var seatPrices = {
-            normal: 70000,
+            normal: 80000,
             vip: 80000,
-            couple: 120000
+            couple: 80000
         };
 
         function selectSeat(row, column) {
@@ -176,6 +177,7 @@
             }
 
             updateSelectedSeats();
+            getSelectedSeats();
         }
 
         function removeSeatFromSelected(row, column) {
@@ -200,7 +202,7 @@
 
             selectedSeats.forEach(function (seat, index) {
                 if (index > 0) {
-                    selectedSeatInfo.innerText += ",  ";
+                    selectedSeatInfo.innerText += ", ";
                 }
                 selectedSeatInfo.innerText += seat.row + seat.column;
             });
@@ -218,6 +220,17 @@
             totalPrice.innerText = "Tổng tiền: " + formatCurrency(total);
         }
 
+        function getSelectedSeats() {
+            var selectedSeatString = document.getElementById("selectedSeatString").innerText;
+
+            selectedSeats.forEach(function (seat, index) {
+                if (index > 0) {
+                    selectedSeatString.innerText += ",  ";
+                }
+                selectedSeatString.innerText += seat.row + seat.column;
+            });
+            selectedSeatString.href = paymentLink.href.replace("", selectedSeatString);
+        }
 
         function formatCurrency(amount) {
             return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(amount);
@@ -239,17 +252,15 @@
         }
         // Gọi hàm assignOccupiedSeatsFromInput với chuỗi "A1, C1"
         assignOccupiedSeatsFromInput("@Model.SeatHaveBeenBookedList");
-
-         function pay(movieId) {
-            var selectedSeatIds = selectedSeats.map(function(seat) {
-                return seat.row + seat.column;
-            });
-            var listSeats = selectedSeatIds.join(","); // Chuyển danh sách ghế đã chọn thành chuỗi
-            var url = "@Url.Action("Index", "Payment", new { idMovie = "movieId", listSeats = "listSeats" })";
-            url = url.replace("movieId", movieId);
-            url = url.replace("listSeats", listSeats);
-            window.location.href = url;
+        function checkSelectedSeats() {
+            var paymentButton = document.getElementById("paymentButton");
+            if (selectedSeats.length === 0) {
+                paymentButton.disabled = true;
+            } else {
+                paymentButton.disabled = false;
+            }
         }
+
     </script>
 </body>
 </html>

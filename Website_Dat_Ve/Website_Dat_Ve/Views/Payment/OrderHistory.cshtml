@@ -1,0 +1,36 @@
+﻿@model List<Website_Dat_Ve.Models.OrderHistoryVM>
+@{
+    ViewBag.Title = "OrderHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2 style="color:green;margin-bottom:20px;">Lịch sử đặt vé</h2>
+</div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            <div class="container" style="padding:20px;border:1px solid green;border-radius:15px; margin-bottom:20px">
+               
+                <div class="row">
+                    <div class="col-md-4  text-center">
+                        <img style="height:280px;width:200px" src="https://apirapphimdvh.bsite.net/@item.Image" />
+                    </div>
+                    <div class="col-md-8">
+                        <h4 style="color:red">Họ và tên: @item.Name</h4>
+                        <p>Số điện thoại: @item.NumberPhone</p>
+                        <p>Email: @item.Email</p>
+                        <p>Tên phim: @item.MovieName</p>
+                        <p>Lịch chiếu: @item.PlayScheduleString</p>
+                        <p>Vị trí ghế ngồi: @item.SeatList</p>
+                        <p>Đơn giá: @item.TotalPrice</p>
+                        <p>Ngày đặt: @item.OrderDateString</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
